@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.notifications_ss.databinding.FragmentFirstBinding
 import com.example.notifications_ss.view_model.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -34,6 +35,17 @@ class FirstFragment : Fragment() {
         }
         binding.button3.setOnClickListener {
             mainViewModel.cancelSimpleNotification()
+        }
+
+        // issue place
+        binding.button4.setOnClickListener {
+            val action = FirstFragmentDirections.actionFirstFragmentToSecondFragment()
+            findNavController().navigate(action)
+        }
+        ///
+
+        binding.button5.setOnClickListener {
+            mainViewModel.progressBarNotifcation()
         }
 
         return binding.root
